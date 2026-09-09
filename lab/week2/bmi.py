@@ -7,6 +7,10 @@ def cal_bmi(height, weight) -> float :
     result = weight / ((height)*0.01)**2
     state = ""
 
+    """
+    bmi의 result에 따라, state를 설정.
+    """
+
     if 20 > result : state = "저체중"
     elif 20<=result<25 : state = "표준"
     elif 25<=result<30 : state = "과체중"
