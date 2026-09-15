@@ -1,18 +1,15 @@
 
-def cal_bmi(height, weight) -> float :
+def cal_bmi(height, weight) :
     """
-    result : bmi 계산한 값.
-    (float 자료형의 값을 출력할 것임.)
-    state : 아래에 있는 bmi에 따른 상태 
-    (state : "저체중", "표준", "과체중", "비만")
+    Args :
+        height (float) : 키 (cm 단위)
+        weigth (float) : 몸무게 (kg 단위)
+    
+    Returns :
+        tuple[str, float] : (비만도 판정 문자열, bmi 계산값)
     """
     result = weight / ((height)*0.01)**2
     state = ""
-
-    """
-    bmi의 result에 따라, state를 설정.
-    [출력형태] (state, result) 즉, 튜플로 출력.
-    """
 
     if 20 > result : state = "저체중"
     elif 20<=result<25 : state = "표준"
