@@ -28,7 +28,6 @@ def stu_cnt() -> int :
     std_cnt = int(input("학생의 수를 입력하세요. (단위 : 명) : "))
     return std_cnt
     
-
 def main() :
     std_list = []
     cnt = stu_cnt()
