@@ -37,7 +37,8 @@ def main() :
 
     for std in std_list :
         state, result = cal_bmi(std[2], std[1])
-        print(f"{std[0]}님은 {state}이고 bmi 수치는 {result:.3f}입니다.")
+        name = std[0]
+        print(f"{name}님은 {state}이고 bmi 수치는 {result:.3f}입니다.")
 
 if __name__ == "__main__" :
     main()
