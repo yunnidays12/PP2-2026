@@ -20,8 +20,8 @@ def cal_bmi(height, weight) :
 
 def stu_input() :
     std_name = input("학생의 이름을 입력하세요. : ")
-    std_height = float(input("학생의 몸무게를 입력하세요. (단위 : kg) : "))
-    std_weight = float(input("학생의 키를 입력하세요. (단위 : cm) : "))
+    std_height = float(input("학생의 키를 입력하세요. (단위 : cm) : "))
+    std_weight = float(input("학생의 몸무게를 입력하세요. (단위 : kg) : "))
     return [std_name, std_weight, std_height]
 
 def stu_cnt() :
@@ -37,7 +37,7 @@ def main() :
 
     for std in std_list :
         state, result = cal_bmi(std[2], std[1])
-        print(f"{std[0]}님은 {state}이고 bmi 수치는 {result:.3d}입니다.")
+        print(f"{std[0]}님은 {state}이고 bmi 수치는 {result:.3f}입니다.")
 
 if __name__ == "__main__" :
     main()
