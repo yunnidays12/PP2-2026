@@ -18,13 +18,13 @@ def cal_bmi(height, weight) :
 
     return state, result
 
-def stu_input() :
+def stu_input() -> list :
     std_name = input("학생의 이름을 입력하세요. : ")
     std_height = float(input("학생의 키를 입력하세요. (단위 : cm) : "))
     std_weight = float(input("학생의 몸무게를 입력하세요. (단위 : kg) : "))
     return [std_name, std_weight, std_height]
 
-def stu_cnt() :
+def stu_cnt() -> int :
     std_cnt = int(input("학생의 수를 입력하세요. (단위 : 명) : "))
     return std_cnt
     
