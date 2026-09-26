@@ -1,0 +1,42 @@
+
+import os
+import random
+
+def create_soundtrack_folder() :
+
+    soundtrack_name = {1 : "과제이해", 2:"포인트이해", 3:"개요이해", 4:"즉시응답", 5:"통합이해"}
+
+    if os.path.exists("Personal_project/soundtrack") == False :
+        for i in soundtrack_name : 
+            os.makedirs(f"Personal_project/soundtrack/{i}({soundtrack_name[i]})")
+        print("폴더 생성 완료")
+        print("환영합니다!")
+
+    else :
+        print("환영합니다!")
+
+def print_info() :
+    soundtrack_name = {1 : "과제이해", 2:"포인트이해", 3:"개요이해", 4:"즉시응답", 5:"통합이해"}
+    print("===랜덤 청해 출제기===")
+    for i in soundtrack_name :
+        print(f"{i}. {soundtrack_name[i]}")
+    print("===================")
+
+    user_choice = int(input("원하는 출제파트를 선택하세요. : "))
+
+    return user_choice
+
+def count_qus(user_choice) :
+    pass
+
+def random_make_number(qus_cnt) :
+    user_number = int(input("선택할 문제의 개수를 입력하세요. : "))
+    num_list = []
+    for _ in range(user_number) :
+        num = random.randrange(1, qus_cnt)
+        num_list.append(num)
+    print("랜덤 출제 완료!")
+    return num_list
+
+def main() :
+    pass
