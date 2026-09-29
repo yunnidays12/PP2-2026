@@ -37,7 +37,7 @@ def count_qus(user_choice): #AI 활용. 이해했는지 검토 요망.
     
     # 2. 폴더 존재 여부 확인
     if not os.path.exists(folder_path):
-        print(f"경고: {folder_path} 경로를 찾을 수 없어.")
+        print(f"경고: {folder_path} 경로를 찾을 수 없습니다.")
         return 0
 
     # 3. 폴더 내 실제 파일만 카운트 (.DS_Store 등 숨김 파일 및 하위 디렉터리 제외)
