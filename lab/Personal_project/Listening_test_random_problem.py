@@ -4,7 +4,7 @@ import random
 
 def create_soundtrack_folder() :
 
-    soundtrack_name = {1 : "과제이해", 2:"포인트이해", 3:"개요이해", 4:"즉시응답", 5:"통합이해"}
+    soundtrack_name = {1 : "과제이해", 2: "포인트이해", 3: "개요이해", 4: "즉시응답", 5: "통합이해"}
 
     #파일이 컴퓨터에 없었다면, 생성하고 인사하기.
 
@@ -18,7 +18,7 @@ def create_soundtrack_folder() :
         print("환영합니다!")
 
 def print_info() :
-    soundtrack_name = {1 : "과제이해", 2:"포인트이해", 3:"개요이해", 4:"즉시응답", 5:"통합이해"}
+    soundtrack_name = {1: "과제이해", 2:"포인트이해", 3:"개요이해", 4:"즉시응답", 5:"통합이해"}
 
     print("===랜덤 청해 출제기===")
     for i in soundtrack_name :
@@ -29,7 +29,7 @@ def print_info() :
 
     return user_choice
 
-def count_qus(user_choice):
+def count_qus(user_choice): #AI 활용. 이해했는지 검토 요망.
     soundtrack_name = {1: "과제이해", 2: "포인트이해", 3: "개요이해", 4: "즉시응답", 5: "통합이해"}
     
     # 1. 사용자가 선택한 파트의 폴더 경로 지정
@@ -48,22 +48,31 @@ def count_qus(user_choice):
     
     number_qus = len(files)
     print(f"선택한 파트의 총 문제 수: {number_qus}개")
-    
+
     return number_qus
 
 def random_make_number(number_qus) :
-    number_list = [i for i in range(1, number_qus+1)]
-    user_input = int(input("몇 문제를 출제할까요? : "))
+
     result = []
 
-    while len(result) != user_input :
-        num = random.choice(number_list)
-        if num not in result :
-            result.append(num)
+    while True :
+        number_list = [i for i in range(1, number_qus+1)]
+        user_input = int(input(f"몇 문제를 출제할까요? (총 {number_qus}문제) : "))
+        
+        if user_input <= number_qus :
+            while len(result) != user_input :
+                num = random.choice(number_list)
+                if num not in result :
+                    result.append(num)
 
-    print("랜덤번호 출제 완료! : ", result)
+            print("랜덤번호 출제 완료! : ", result)
+            return result
+        
+        else :
+            print("출제가능한 문제보다 많습니다.")
 
-    return result
+def play_mp3(user_choice, random_list) : #playground 모듈 사용할 지 생각해보기. --> 사용해보자.
+    pass
 
 def main() :
     create_soundtrack_folder()
@@ -71,7 +80,7 @@ def main() :
     user_input = print_info()
     number_qus = count_qus(user_input)
 
-    random_make_number(number_qus)
+    random_list = random_make_number(number_qus)
 
 if __name__ == "__main__" :
     main()
