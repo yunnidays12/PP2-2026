@@ -2,9 +2,9 @@
 
 def checkPass(p) :
 
-    upper_list = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
-    lower_list = ["abcdefghijklmnopqrstuvwxyz"]
-    number_list = ["0123456789"]
+    upper_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    lower_list = "abcdefghijklmnopqrstuvwxyz"
+    number_list = "0123456789"
 
     if len(p) >= 8 :
         upper_cnt = 0
