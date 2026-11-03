@@ -20,11 +20,15 @@ label.pack()
 
 # [버튼] 함수와 command를 이용해서 신호가 돌아오도록 하기.
 
+cnt = 0
+
 def on_btn1_cilcked(event) :
+    global cnt
     print(f"버튼이 클릭되었습니다. : {event}")
     # [출력결과 中] 버튼이 클릭되었습니다. : <ButtonPress event state=Mod1 num=1 x=22 y=17>
-    label.config(text = f"버튼1이 클릭되었습니다. : {event}")
-    # [출력결과] label에 버튼1이 클릭되었다와 event의 정보가 출력된다.
+    cnt += 1
+    label.config(text = f"버튼1이 클릭되었습니다. : {cnt}번")
+    # [출력결과] label에 버튼1이 클릭되었다와 cnt 을 출력
     
 # btn1 = Button(window, text = "Click your limit.", bg = "#000000", fg = "#ffffff", command = on_btn1_cilcked)
 btn1 = Button(window, text = "Click your limit.", bg = "#000000", 
