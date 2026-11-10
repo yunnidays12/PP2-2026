@@ -13,11 +13,10 @@ class Person :
         self.weg = weg
         self.bmi = bmi
         self.state = state
-        self.id = f"PP2-{self.count:03d}"
+        self.id = f"PP2-{Person.count:04d}"
+        Person.count += 1
 
     def to_dict(self) :
-
-        self.count += 1
 
         return {"id" : self.id,
                 "name" : self.name,
@@ -30,18 +29,42 @@ class Person :
 
 def write_txt(path, person) :
     a = person.to_dict()
-    line = f"{a["id"]}, {a["name"]}, {a["year"]}, {a["sex"]}, {a["height"]}, {a["weight"]}, {a["bmi"]}, {a["state"]}"
+    line = f"{a["id"]},{a["name"]},{a["year"]},{a["sex"]},{a["height"]},{a["weight"]},{a["bmi"]},{a["state"]}"
 
-    with open(path, "a", encoding="utf-8") as f :
-        f.write(line + "\n")
+    try :
+        with open(path, "a", encoding="utf-8") as f :
+            f.write(line + "\n")
+
+    except FileNotFoundError :
+         print("파일을 찾을 수 없습니다.")
+
+def read_txt(path) :
+    result = []
+    try :
+        with open(path, "r", encoding="utf-8") as f:
+            all_data = f.readlines()
+            for text in all_data :
+                clean_data = [x.strip() for x in text.strip().split(",")]
+                result.append(clean_data)
+            return result
+        
+    except FileNotFoundError :
+        print("파일을 찾을 수 없습니다.")
 
 def write_json(path, person) : 
     a = person.to_dict()
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(a, f, ensure_ascii=False, indent=4)
+    try :
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(a, f, ensure_ascii=False, indent=4)
 
-if __name__ == "__main__" :
-    
-    path = "lab\\week11\\data\\write_json.json"
-    person = Person("홍길동", 1995, "남", 175, 72.5, 23.67, "과체중")
-    write_json(path, person)
+    except FileNotFoundError :
+        print("파일을 찾을 수 없습니다.")
+
+def read_json(path) :
+    try :
+        with open(path, "r", encoding="utf-8") as f :
+            data = json.load(f)
+        return data
+
+    except FileNotFoundError :
+        print("파일을 찾을 수 없습니다.")
