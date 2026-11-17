@@ -5,21 +5,29 @@ class Person :
 
     count = 1
 
-    def __init__(self, name : str, year : int, sex : str, heg : float, weg : float, bmi : float, state : str):
+    def __init__(self, name : str, year : int, sex : str, heg : float, weg : float):
         self.name = name
         self.year = year
         self.sex = sex
         self.heg = heg
         self.weg = weg
-        self.bmi = bmi
-        self.state = state
+        self.bmi = round(weg / ((heg *0.01)**2), 3)
+
+        if self.bmi < 18.5 : self.state = "저체중"
+        elif 18.5 <= self.bmi <= 22.9 : self.state = "정상"
+        elif 23 <= self.bmi <= 24.9 : self.state = "과체중"
+        elif 25 <= self.bmi <= 29.9 : self.state = "중도비만"
+        else : self.state = "비만"
+        
         self.id = f"PP2-{Person.count:04d}"
         Person.count += 1
 
+    def to_list(self) :
+        return [self.name, self.year, self.sex, self.heg, self.weg, self.bmi, self.state, self.id]
+
     def to_dict(self) :
 
-        return {"id" : self.id,
-                "name" : self.name,
+        return {"name" : self.name,
                 "year" : self.year,
                 "sex" : self.sex,
                 "height" : self.heg,
